@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdoul Mazide Baldé — Expert Réseaux & Cybersécurité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent:       #1D9E75;
+    --accent-light: #E1F5EE;
+    --accent-dark:  #085041;
+    --accent-mid:   #0F6E56;
+    --blue:         #378ADD;
+    --blue-light:   #E6F1FB;
+    --blue-mid:     #185FA5;
+    --text:         #1a1a18;
+    --muted:        #5F5E5A;
+    --hint:         #888780;
+    --bg:           #F7F6F2;
+    --surface:      #FFFFFF;
+    --border:       rgba(0,0,0,0.10);
+    --border-mid:   rgba(0,0,0,0.15);
+    --radius-sm:    8px;
+    --radius-md:    12px;
+    --radius-lg:    16px;
+    --font:         'DM Sans', sans-serif;
+    --mono:         'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(247,246,242,0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 100;
+    padding: .75rem 0;
+  }
+  nav .page-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--text);
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .available-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-mid);
+    background: var(--accent-light);
+    border: 0.5px solid #5DCAA5;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .available-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:.5; transform:scale(1.3); }
+  }
+  .hero-name {
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: .4rem;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-role {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 580px;
+    margin-bottom: 2rem;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid;
+  }
+  .tag-green { color: var(--accent-mid); background: var(--accent-light); border-color: #5DCAA5; }
+  .tag-blue  { color: var(--blue-mid);   background: var(--blue-light);   border-color: #85B7EB; }
+  .tag-gray  { color: var(--muted);      background: #F1EFE8;             border-color: #B4B2A9; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 480px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -.02em;
+  }
+  .stat-suffix { font-size: 16px; color: var(--accent); }
+  .stat-label { font-size: 11px; color: var(--hint); margin-top: 3px; }
+
+  /* ── Sections ── */
+  section { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1.75rem;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--hint);
+  }
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ── Services ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .service-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem 1.25rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .service-card:hover {
+    border-color: var(--border-mid);
+    transform: translateY(-2px);
+  }
+  .service-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .8rem;
+    font-size: 17px;
+  }
+  .service-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
+  .service-desc  { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+  /* ── Projects ── */
+  .projects-list { display: flex; flex-direction: column; gap: 14px; }
+  .project-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.4rem;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1.1rem;
+    align-items: start;
+    transition: border-color .2s;
+  }
+  .project-card:hover { border-color: var(--border-mid); }
+  .project-num {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-mid);
+    font-family: var(--mono);
+    flex-shrink: 0;
+  }
+  .project-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: .35rem; }
+  .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: .7rem; }
+  .project-tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    background: #F1EFE8;
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    font-family: var(--mono);
+  }
+
+  /* ── Certifications ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .cert-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    transition: border-color .2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-badge {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    font-family: var(--mono);
+    flex-shrink: 0;
+    letter-spacing: .02em;
+  }
+  .cert-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .cert-org  { font-size: 11px; color: var(--hint); margin-top: 2px; }
+
+  /* ── Formation ── */
+  .formation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .formation-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--accent);
+    transition: border-color .2s;
+  }
+  .formation-degree { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
+  .formation-school { font-size: 13px; font-weight: 500; color: var(--accent-mid); }
+  .formation-type   { font-size: 11px; color: var(--hint); margin-top: .25rem; }
+
+  /* ── Approche ── */
+  .approach-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .approach-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .7rem 1.1rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .approach-step-icon { font-size: 16px; color: var(--accent); }
+  .approach-arrow { color: var(--hint); font-size: 16px; }
+
+  /* ── Contact ── */
+  #contact { border-bottom: none; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s, transform .2s;
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .contact-icon {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .ci-green { background: var(--accent-light); color: var(--accent-mid); }
+  .ci-blue  { background: var(--blue-light);   color: var(--blue-mid); }
+  .contact-label { font-size: 11px; color: var(--hint); margin-bottom: 2px; }
+  .contact-value { font-size: 13px; font-weight: 500; color: var(--text); }
+
+  .cta-banner {
+    background: var(--accent-light);
+    border: 0.5px solid #5DCAA5;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cta-text h3 { font-size: 16px; font-weight: 600; color: var(--accent-dark); margin-bottom: .2rem; }
+  .cta-text p  { font-size: 13px; color: var(--accent-mid); }
+  .cta-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    padding: .7rem 1.2rem;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .cta-badge:hover { background: var(--accent-mid); }
+
+  /* ── Footer ── */
+  footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--hint);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 560px) {
+    .hero { padding: 2.5rem 0 2rem; }
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+    .formation-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .approach-flow { flex-direction: column; align-items: flex-start; }
+    .approach-arrow { transform: rotate(90deg); }
+  }
+
+  /* ── Icons (inline SVG replacements) ── */
+  .icon { display:inline-block; width:1em; height:1em; vertical-align:-0.1em; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="page-wrap">
+    <span class="nav-name">Abdoul Mazide Baldé</span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-wrap">
+
+    <!-- Hero -->
+    <section class="hero" id="accueil">
+      <div class="available-pill">
+        <span class="available-dot"></span>
+        Disponible · Diagnostic en moins de 24h
+      </div>
+      <h1 class="hero-name">Abdoul Mazide <span>Baldé</span></h1>
+      <p class="hero-role">Responsable des opérations réseau &amp; sécurité · 7 ans d'expérience</p>
+      <p class="hero-desc">
+        J'interviens pour diagnostiquer et résoudre rapidement les problèmes IT — WiFi instable, lenteurs, coupures, failles de sécurité — et mettre en place des infrastructures fiables, sécurisées et durables. Expérience en environnements critiques où les interruptions ne sont pas une option.
+      </p>
+      <div class="hero-tags">
+        <span class="tag tag-green">Réseaux &amp; infrastructure</span>
+        <span class="tag tag-green">Cybersécurité</span>
+        <span class="tag tag-blue">WiFi &amp; performance</span>
+        <span class="tag tag-blue">Environnements critiques</span>
+        <span class="tag tag-gray">PME &amp; commerces</span>
+        <span class="tag tag-gray">Montréal &amp; région</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">7<span class="stat-suffix">+</span></div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Diplômes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="section-header">
+        <span class="section-title">Services</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📡</div>
+          <div class="service-title">Diagnostic réseau &amp; WiFi</div>
+          <div class="service-desc">Résolution d'instabilités, interférences et problèmes de couverture</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🖥️</div>
+          <div class="service-title">Infrastructure IT</div>
+          <div class="service-desc">Conception, déploiement et optimisation — réseau, câblage, équipements</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <div class="service-title">Sécurisation</div>
+          <div class="service-desc">Pare-feu, VLAN, segmentation, gestion des accès, antivirus</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📞</div>
+          <div class="service-title">Solutions PME</div>
+          <div class="service-desc">Téléphonie IP, messagerie, périphériques, déploiement complet</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <div class="service-title">Audit sécurité &amp; réseau</div>
+          <div class="service-desc">Analyse de vulnérabilités, correctifs, recommandations</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛠️</div>
+          <div class="service-title">Support avancé</div>
+          <div class="service-desc">Gestion d'incidents critiques et support technique terrain</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+      <div class="section-header">
+        <span class="section-title">Projets réalisés</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-list">
+
+        <div class="project-card">
+          <div class="project-num">01</div>
+          <div>
+            <div class="project-name">Déploiement WiFi complet — Restaurant-bar</div>
+            <div class="project-desc">Mise en place d'une infrastructure WiFi pour un établissement d'une vingtaine de places. Connexion et configuration réussie de l'ensemble des périphériques (Sonos, téléviseurs) sur le réseau.</div>
+            <div class="project-tags">
+              <span class="project-tag">WiFi</span>
+              <span class="project-tag">Périphériques réseau</span>
+              <span class="project-tag">Infrastructure</span>
+              <span class="project-tag">Restauration</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <div>
+            <div class="project-name">Téléphonie IP mobile — Call Centric / Zoiper</div>
+            <div class="project-desc">Interconnexion et déploiement d'une procédure de connexion à Call Centric via Zoiper sur Android et iPhone, afin d'améliorer la mobilité et la flexibilité des communications.</div>
+            <div class="project-tags">
+              <span class="project-tag">VoIP</span>
+              <span class="project-tag">Téléphonie IP</span>
+              <span class="project-tag">Android</span>
+              <span class="project-tag">iPhone</span>
+              <span class="project-tag">Mobilité</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <div>
+            <div class="project-name">Extension réseau — Direction d'école</div>
+            <div class="project-desc">Coordination avec le fournisseur d'accès internet pour la configuration d'adresses IP publiques et déploiement d'un routeur Netgear afin d'améliorer la portée et la fiabilité du signal réseau de la direction.</div>
+            <div class="project-tags">
+              <span class="project-tag">Routeur Netgear</span>
+              <span class="project-tag">IP publique</span>
+              <span class="project-tag">FAI</span>
+              <span class="project-tag">Éducation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <div class="section-header">
+        <span class="section-title">Certifications</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-badge">CCNA</div>
+          <div>
+            <div class="cert-name">CCNA</div>
+            <div class="cert-org">Cisco Systems</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">FCA</div>
+          <div>
+            <div class="cert-name">Fortinet Certified Associate</div>
+            <div class="cert-org">Fortinet</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">EDU</div>
+          <div>
+            <div class="cert-name">EDU-110</div>
+            <div class="cert-org">Palo Alto Networks</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formation -->
+      <div style="margin-top: 2rem;">
+        <div class="section-header">
+          <span class="section-title">Formation académique</span>
+          <div class="section-line"></div>
+        </div>
+        <div class="formation-grid">
+          <div class="formation-card">
+            <div class="formation-degree">Baccalauréat en cybersécurité</div>
+            <div class="formation-school">Polytechnique Montréal</div>
+            <div class="formation-type">Formation universitaire · B.Sc.</div>
+          </div>
+          <div class="formation-card">
+            <div class="formation-degree">DEC en réseautique</div>
+            <div class="formation-school">Institut Teccart</div>
+            <div class="formation-type">Formation technique collégiale</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approche -->
+    <section id="approche">
+      <div class="section-header">
+        <span class="section-title">Approche</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="approach-flow">
+        <div class="approach-step">
+          <span class="approach-step-icon">🔎</span>
+          Analyse rapide
+        </div>
+        <span class="approach-arrow">→</span>
+        <div class="approach-step">
+          <span class="approach-step-icon">💡</span>
+          Solution claire
+        </div>
+        <span class="approach-arrow">→</span>
+        <div class="approach-step">
+          <span class="approach-step-icon">⚙️</span>
+          Mise en œuvre
+        </div>
+        <span class="approach-arrow">→</span>
+        <div class="approach-step">
+          <span class="approach-step-icon">✅</span>
+          Résultat durable
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header">
+        <span class="section-title">Contact</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:mazidebalde23@gmail.com">
+          <div class="contact-icon ci-green">✉️</div>
+          <div>
+            <div class="contact-label">Courriel</div>
+            <div class="contact-value">mazidebalde23@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-card" href="tel:+14388812259">
+          <div class="contact-icon ci-green">📱</div>
+          <div>
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-value">(438) 881-2259</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/abdoul-mazide-balde-05a909140" target="_blank" rel="noopener">
+          <div class="contact-icon ci-blue">🔗</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">Abdoul Mazide Baldé</div>
+          </div>
+        </a>
+        <div class="contact-card" style="cursor:default;">
+          <div class="contact-icon ci-green">📍</div>
+          <div>
+            <div class="contact-label">Localisation</div>
+            <div class="contact-value">Montréal, Québec</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-banner">
+        <div class="cta-text">
+          <h3>Prêt à démarrer un mandat ?</h3>
+          <p>Disponible pour mandats ponctuels, projets d'optimisation ou accompagnement à long terme.</p>
+        </div>
+        <a class="cta-badge" href="mailto:mazidebalde23@gmail.com">
+          ✉️ Envoyer un message
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="page-wrap">
+    © 2025 Abdoul Mazide Baldé · Expert réseaux &amp; cybersécurité · Montréal, Québec
+  </div>
+</footer>
+
+</body>
+</html>
